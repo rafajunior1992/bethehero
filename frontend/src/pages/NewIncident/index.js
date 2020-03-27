@@ -30,6 +30,7 @@ export default function NewIncident () {
                     Authorization: ongId
                 }
             })
+            
             alert('Caso cadastrado com sucesso.');
             history.push('/profile');
         }catch(err) {

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom'; // useHistory quando deseja direcionar para uma nova página do projeto
 import { FiLogIn } from 'react-icons/fi'; //importando icones do react, especificamente do feather icons por isso "fi"
 
 import api from '../../services/api';
 
-import './styles.css';
+import './styles.css'; //estilização da página
 
 import heroesImg from '../../assets/heroes.png';
 import logoImg from '../../assets/logo.svg';
@@ -17,23 +17,23 @@ export default function Logon() {
         e.preventDefault();
 
         try{
-            const response = await api.post('sessions', { id });
+            const response = await api.post('sessions', { id }); //tenta logar com id fornecido
 
-            localStorage.setItem('ongId', id);
-            localStorage.setItem('ongName', response.data.name);
+            localStorage.setItem('ongId', id); //salva o id que teve sucesso para logar
+            localStorage.setItem('ongName', response.data.name);//salva o nome da ong
 
-            history.push('/profile');
+            history.push('/profile');//direciona para a página profile que apresenta os casos da ong logada
         }catch (err){
-            alert('Falha no login, tente novamente');
+            alert('Falha no login, tente novamente');//caso não esteja correto o id cai em falha
         }
     }
     return (
-        <div className="logon-container">
+        <div className="logon-container"> 
             <section className="form">
                 <img src={ logoImg } alt="Be The Hero"/>
 
-                <form onSubmit={handleLogin}>
-                    <h1>Faça seu logon</h1>
+                <form onSubmit={handleLogin}> {/**form de login*/}
+                    <h1>Faça seu logon</h1> 
 
                     <input 
                         placeholder="Sua ID" 
